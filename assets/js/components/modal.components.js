@@ -5,6 +5,10 @@ const ModalComponent = {
 
     ValidationHelper.resetForm();
 
+    if (window.MultiSelectComponent && typeof window.MultiSelectComponent.syncModalDepartmentSelect === "function") {
+      window.MultiSelectComponent.syncModalDepartmentSelect();
+    }
+
     $("#employeeModal")
       .removeClass("hidden")
       .addClass("flex");
@@ -20,6 +24,10 @@ const ModalComponent = {
     $("#department").val(employee.department);
     $("#salary").val(employee.salary);
     $("#joinDate").val(employee.joinDate);
+
+    if (window.MultiSelectComponent && typeof window.MultiSelectComponent.syncModalDepartmentSelect === "function") {
+      window.MultiSelectComponent.syncModalDepartmentSelect();
+    }
 
     $("#employeeModal")
       .removeClass("hidden")

@@ -1,4 +1,6 @@
 const MultiSelectComponent = {
+  modalDepartmentState: null,
+
   initDepartmentFilter: () => {
     const select = document.getElementById("departmentFilter");
 
@@ -182,8 +184,146 @@ const MultiSelectComponent = {
     syncLabel();
   },
 
+  initModalDepartmentSelect: () => {
+    const select = document.getElementById("department");
+
+    if (!select) {
+      return;
+    }
+
+    if (select.dataset.customSingleInitialized === "true") {
+      return;
+    }
+
+    select.dataset.customSingleInitialized = "true";
+    select.classList.add("department-single-native");
+
+    const dropdown = document.createElement("div");
+    dropdown.id = "departmentCustomSingle";
+    dropdown.className = "department-single";
+
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "department-single-trigger";
+    trigger.setAttribute("aria-haspopup", "listbox");
+    trigger.setAttribute("aria-expanded", "false");
+
+    const label = document.createElement("span");
+    label.className = "department-single-label";
+
+    const caret = document.createElement("span");
+    caret.className = "department-single-caret";
+    caret.setAttribute("aria-hidden", "true");
+    caret.textContent = "▾";
+
+    const menu = document.createElement("div");
+    menu.className = "department-single-menu";
+    menu.setAttribute("role", "listbox");
+
+    Array.from(select.options).forEach((option) => {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = "department-single-option";
+      item.dataset.value = option.value;
+      item.textContent = option.text;
+
+      if (!option.value) {
+        item.classList.add("is-placeholder");
+      }
+
+      menu.appendChild(item);
+    });
+
+    trigger.append(label, caret);
+    dropdown.append(trigger, menu);
+    select.insertAdjacentElement("afterend", dropdown);
+
+    const closeMenu = () => {
+      dropdown.classList.remove("is-open");
+      trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const openMenu = () => {
+      dropdown.classList.add("is-open");
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const syncFromSelect = () => {
+      const selectedValue = select.value || "";
+      const selectedOption = Array.from(select.options).find((option) => option.value === selectedValue);
+
+      label.textContent = selectedOption ? selectedOption.text : "Pilih Departemen";
+      trigger.classList.toggle("is-empty", !selectedValue);
+
+      Array.from(menu.querySelectorAll(".department-single-option")).forEach((item) => {
+        const isSelected = item instanceof HTMLButtonElement && item.dataset.value === selectedValue;
+        item.classList.toggle("is-selected", isSelected);
+      });
+    };
+
+    trigger.addEventListener("click", () => {
+      if (dropdown.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menu.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const optionElement = target.closest(".department-single-option");
+      if (!(optionElement instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      select.value = optionElement.dataset.value || "";
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      syncFromSelect();
+      closeMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) {
+        return;
+      }
+
+      if (!event.target.closest("#departmentCustomSingle")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    select.addEventListener("change", syncFromSelect);
+
+    MultiSelectComponent.modalDepartmentState = {
+      sync: syncFromSelect,
+      close: closeMenu
+    };
+
+    syncFromSelect();
+  },
+
+  syncModalDepartmentSelect: () => {
+    if (MultiSelectComponent.modalDepartmentState && typeof MultiSelectComponent.modalDepartmentState.sync === "function") {
+      MultiSelectComponent.modalDepartmentState.sync();
+      return;
+    }
+
+    MultiSelectComponent.initModalDepartmentSelect();
+  },
+
   init: () => {
     MultiSelectComponent.initDepartmentFilter();
+    MultiSelectComponent.initModalDepartmentSelect();
   }
 };
 

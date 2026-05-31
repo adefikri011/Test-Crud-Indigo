@@ -10,6 +10,7 @@ import './components/sound.components.js';
 import './components/alert.components.js';
 import './components/loading.components.js';
 import './components/confirm.components.js';
+import './components/multiselect.components.js';
 
 import './services/data.services.js';
 

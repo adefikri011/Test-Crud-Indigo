@@ -1,15 +1,20 @@
 const ReadHandler = {
   getFilteredEmployees: () => {
     const keyword = $("#searchInput").val() || "";
-    const department = $("#departmentFilter").val() || "";
+    const departmentValue = $("#departmentFilter").val();
+    const departments = Array.isArray(departmentValue)
+      ? departmentValue.filter(Boolean)
+      : departmentValue
+        ? [departmentValue]
+        : [];
 
     const searchedEmployees = DataService.searchEmployees(keyword);
 
-    if (!department) {
+    if (departments.length === 0) {
       return searchedEmployees;
     }
 
-    return searchedEmployees.filter((employee) => employee.department === department);
+    return searchedEmployees.filter((employee) => departments.includes(employee.department));
   },
   renderAll: () => {
     const employees = ReadHandler.getFilteredEmployees();

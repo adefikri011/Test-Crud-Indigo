@@ -3,6 +3,13 @@ $(function () {
   
   ModalComponent.init();
   CreateHandler.init();
+  if (typeof window.MultiSelectComponent !== "undefined" && typeof window.MultiSelectComponent.init === "function") {
+    try {
+      window.MultiSelectComponent.init();
+    } catch (error) {
+      console.error("Department filter multiselect init failed:", error);
+    }
+  }
   ReadHandler.init();
   UpdateHandler.init();
   DeleteHandler.init();

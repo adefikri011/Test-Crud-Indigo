@@ -9,5 +9,4 @@ $(function () {
   requestAnimationFrame(() => {
     LoadingComponent.hide();
   });
-
 });

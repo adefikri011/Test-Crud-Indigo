@@ -1,7 +1,3 @@
-// =============================================
-// CONFIRM COMPONENT
-// =============================================
-
 const ConfirmComponent = {
   resolver: null,
 
@@ -118,5 +114,4 @@ const ConfirmComponent = {
     });
   }
 };
-
 window.ConfirmComponent = ConfirmComponent;

@@ -1,23 +1,13 @@
-// =============================================
-// TABLE COMPONENT
-// =============================================
-
 const TableComponent = {
-
-  /**
-   * Render seluruh tabel
-   * @param {Array} employees
-   */
   renderTable: (employees) => {
+    const $desktopBody = $("#employeeTableBodyDesktop");
+    const $mobileContainer = $("#employeeCardContainer");
 
-  const $desktopBody = $("#employeeTableBodyDesktop");
-  const $mobileContainer = $("#employeeCardContainer");
+    $desktopBody.empty();
+    $mobileContainer.empty();
 
-  $desktopBody.empty();
-  $mobileContainer.empty();
-
-  if (!employees || employees.length === 0) {
-    $desktopBody.append(`
+    if (!employees || employees.length === 0) {
+      $desktopBody.append(`
       <tr>
         <td colspan="8" class="px-6 py-12 text-center text-slate-500">
           Belum ada data karyawan.
@@ -25,19 +15,17 @@ const TableComponent = {
       </tr>
     `);
 
-    $mobileContainer.append(`
+      $mobileContainer.append(`
       <div class="text-center text-slate-500 py-10">
         Belum ada data karyawan.
       </div>
     `);
 
-    return;
-  }
+      return;
+    }
 
-  employees.forEach((employee, index) => {
-
-    // ✅ DESKTOP ROW
-    const desktopRow = `
+    employees.forEach((employee, index) => {
+      const desktopRow = `
       <tr class="hover:bg-slate-50 transition">
         <td class="px-6 py-4 text-sm">${index + 1}</td>
         <td class="px-6 py-4 text-sm font-medium">${employee.name}</td>
@@ -59,10 +47,9 @@ const TableComponent = {
       </tr>
     `;
 
-    $desktopBody.append(desktopRow);
+      $desktopBody.append(desktopRow);
 
-    // ✅ MOBILE CARD
-    const mobileCard = `
+      const mobileCard = `
       <div class="bg-slate-50 rounded-xl p-4 shadow-sm border border-slate-200">
         
         <div class="flex justify-between items-start mb-2">
@@ -93,14 +80,9 @@ const TableComponent = {
       </div>
     `;
 
-    $mobileContainer.append(mobileCard);
-
-  });
-},
-
-  /**
-   * Empty state row
-   */
+      $mobileContainer.append(mobileCard);
+    });
+  },
   getEmptyStateRow: () => {
     return `
       <tr>
@@ -111,10 +93,6 @@ const TableComponent = {
     `;
   },
 
-  /**
-   * Format currency ke Rupiah
-   * @param {number|string} amount
-   */
   formatCurrency: (amount) => {
     const value = parseFloat(amount) || 0;
     return new Intl.NumberFormat(APP_CONFIG.currency.locale, {
@@ -124,9 +102,6 @@ const TableComponent = {
     }).format(value);
   },
 
-  /**
-   * Update summary cards
-   */
   updateSummary: () => {
     const stats = DataService.getStatistics();
 
@@ -138,6 +113,4 @@ const TableComponent = {
   }
 
 };
-
-// Export global
 window.TableComponent = TableComponent;

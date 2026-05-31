@@ -1,12 +1,4 @@
-// =============================================
-// UPDATE HANDLER
-// =============================================
-
 const UpdateHandler = {
-
-  /**
-   * Handle klik tombol Edit
-   */
   handleEditClick: () => {
     $(document).on("click", ".edit-btn", function () {
       const id = parseInt($(this).data("id"));
@@ -20,16 +12,12 @@ const UpdateHandler = {
       ModalComponent.openEditModal(employee);
     });
   },
-
-  /**
-   * Handle submit form (edit mode)
-   */
   handleUpdateSubmit: () => {
     $(document).on("submit", "#employeeForm", function (e) {
       e.preventDefault();
 
       const employeeId = $("#employeeId").val();
-      if (!employeeId) return; // Bukan edit mode
+      if (!employeeId) return;
 
       const formData = ValidationHelper.getFormData();
 
@@ -62,7 +50,6 @@ const UpdateHandler = {
     UpdateHandler.handleEditClick();
     UpdateHandler.handleUpdateSubmit();
   }
-
 };
 
 window.UpdateHandler = UpdateHandler;

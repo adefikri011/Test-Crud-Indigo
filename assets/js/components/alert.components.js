@@ -1,16 +1,5 @@
-// =============================================
-// ALERT (TOAST) COMPONENT
-// =============================================
-
 const AlertComponent = {
-
-  /**
-   * Tampilkan toast
-   * @param {string} message
-   * @param {string} type (success | error | info)
-   */
   showToast: (message, type = "success") => {
-
     if (type === "success" && window.SoundComponent && typeof SoundComponent.playSuccess === "function") {
       SoundComponent.playSuccess();
     }
@@ -38,15 +27,11 @@ const AlertComponent = {
 
     $("#toastContainer").append(toast);
 
-    // Auto remove setelah 3 detik
     setTimeout(() => {
       $("#" + toastId).fadeOut(300, function () {
         $(this).remove();
       });
     }, 3000);
   }
-
 };
-
-// Export global
 window.AlertComponent = AlertComponent;

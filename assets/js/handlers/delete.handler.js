@@ -1,9 +1,4 @@
-// =============================================
-// DELETE HANDLER
-// =============================================
-
 const DeleteHandler = {
-
   handleDeleteClick: () => {
     $(document).on("click", ".delete-btn", function () {
       const id = parseInt($(this).data("id"));
@@ -39,7 +34,6 @@ const DeleteHandler = {
   init: () => {
     DeleteHandler.handleDeleteClick();
   }
-
 };
 
 window.DeleteHandler = DeleteHandler;

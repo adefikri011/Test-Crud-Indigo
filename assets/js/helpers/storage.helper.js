@@ -1,9 +1,4 @@
 const StorageHelper = {
-  /**
-   * Simpan data ke localStorage
-   * @param {string} key - Key storage
-   * @param {any} data - Data yang disimpan
-   */
   set: (key, data) => {
     try {
       localStorage.setItem(key, JSON.stringify(data));
@@ -13,12 +8,6 @@ const StorageHelper = {
       return false;
     }
   },
-
-  /**
-   * Ambil data dari localStorage
-   * @param {string} key - Key storage
-   * @returns {any|null} Data yang diambil
-   */
   get: (key) => {
     try {
       const data = localStorage.getItem(key);
@@ -28,12 +17,6 @@ const StorageHelper = {
       return null;
     }
   },
-
-  /**
-   * Hapus data dari localStorage
-   * @param {string} key - Key storage
-   * @returns {boolean}
-   */
   remove: (key) => {
     try {
       localStorage.removeItem(key);
@@ -43,10 +26,6 @@ const StorageHelper = {
       return false;
     }
   },
-
-  /**
-   * Hapus semua data
-   */
   clearAll: () => {
     try {
       localStorage.clear();
@@ -57,6 +36,4 @@ const StorageHelper = {
     }
   }
 };
-
-// Export ke global scope
 window.StorageHelper = StorageHelper;

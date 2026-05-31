@@ -1,6 +1,7 @@
 module.exports = {
   content: [
     './index.html',
+    './partials/**/*.html',
     './assets/js/**/*.js',
     './assets/partials/**/*.html'
   ],

@@ -29,7 +29,7 @@ const MultiSelectComponent = {
     const trigger = document.createElement("button");
     trigger.type = "button";
     trigger.className = "department-multi-trigger";
-    trigger.setAttribute("aria-haspopup", "listbox");
+    trigger.setAttribute("aria-haspopup", "true");
     trigger.setAttribute("aria-expanded", "false");
 
     const label = document.createElement("span");
@@ -43,8 +43,22 @@ const MultiSelectComponent = {
 
     const menu = document.createElement("div");
     menu.className = "department-multi-menu";
-    menu.setAttribute("role", "listbox");
-    menu.setAttribute("aria-multiselectable", "true");
+    menu.id = "departmentFilterCustomMenu";
+    menu.setAttribute("role", "group");
+
+    const filterLabel = document.querySelector('label[for="departmentFilter"]');
+    if (filterLabel) {
+      if (!filterLabel.id) {
+        filterLabel.id = "departmentFilterLabel";
+      }
+      menu.setAttribute("aria-labelledby", filterLabel.id);
+      trigger.setAttribute("aria-labelledby", filterLabel.id);
+    } else {
+      menu.setAttribute("aria-label", "Filter Departemen");
+      trigger.setAttribute("aria-label", "Filter Departemen");
+    }
+
+    trigger.setAttribute("aria-controls", menu.id);
 
     const actions = document.createElement("div");
     actions.className = "department-multi-actions";
@@ -218,7 +232,22 @@ const MultiSelectComponent = {
 
     const menu = document.createElement("div");
     menu.className = "department-single-menu";
+    menu.id = "departmentCustomSingleMenu";
     menu.setAttribute("role", "listbox");
+
+    const modalLabel = document.querySelector('label[for="department"]');
+    if (modalLabel) {
+      if (!modalLabel.id) {
+        modalLabel.id = "departmentModalLabel";
+      }
+      menu.setAttribute("aria-labelledby", modalLabel.id);
+      trigger.setAttribute("aria-labelledby", modalLabel.id);
+    } else {
+      menu.setAttribute("aria-label", "Departemen");
+      trigger.setAttribute("aria-label", "Departemen");
+    }
+
+    trigger.setAttribute("aria-controls", menu.id);
 
     Array.from(select.options).forEach((option) => {
       const item = document.createElement("button");
@@ -226,6 +255,8 @@ const MultiSelectComponent = {
       item.className = "department-single-option";
       item.dataset.value = option.value;
       item.textContent = option.text;
+      item.setAttribute("role", "option");
+      item.setAttribute("aria-selected", "false");
 
       if (!option.value) {
         item.classList.add("is-placeholder");
@@ -258,6 +289,7 @@ const MultiSelectComponent = {
       Array.from(menu.querySelectorAll(".department-single-option")).forEach((item) => {
         const isSelected = item instanceof HTMLButtonElement && item.dataset.value === selectedValue;
         item.classList.toggle("is-selected", isSelected);
+        item.setAttribute("aria-selected", isSelected ? "true" : "false");
       });
     };
 

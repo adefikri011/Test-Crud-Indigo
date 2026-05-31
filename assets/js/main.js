@@ -1,29 +1,46 @@
 $(function () {
-  LoadingComponent.show("Menyiapkan dashboard...");
-  
-  ModalComponent.init();
-  CreateHandler.init();
-  if (typeof window.MultiSelectComponent !== "undefined" && typeof window.MultiSelectComponent.init === "function") {
-    try {
-      window.MultiSelectComponent.init();
-    } catch (error) {
-      console.error("Department filter multiselect init failed:", error);
-    }
-  }
-  ReadHandler.init();
-  UpdateHandler.init();
-  DeleteHandler.init();
+  let started = false;
 
-  const renderLucideIcons = () => {
-    if (typeof window.lucide !== 'undefined' && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons();
+  const startApp = () => {
+    if (started) {
+      return;
     }
+
+    started = true;
+    LoadingComponent.show("Menyiapkan dashboard...");
+
+    ReadHandler.init();
+
+    const initDeferredModules = () => {
+      ModalComponent.init();
+      CreateHandler.init();
+      UpdateHandler.init();
+      DeleteHandler.init();
+
+      if (typeof window.MultiSelectComponent !== "undefined" && typeof window.MultiSelectComponent.init === "function") {
+        try {
+          window.MultiSelectComponent.init();
+        } catch (error) {
+          console.error("Department filter multiselect init failed:", error);
+        }
+      }
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(initDeferredModules, { timeout: 1200 });
+    } else {
+      setTimeout(initDeferredModules, 120);
+    }
+
+    requestAnimationFrame(() => {
+      LoadingComponent.hide();
+    });
   };
 
-  renderLucideIcons();
-  window.addEventListener("load", renderLucideIcons, { once: true });
+  if (window.__APP_PARTIALS_READY__ === true) {
+    startApp();
+    return;
+  }
 
-  requestAnimationFrame(() => {
-    LoadingComponent.hide();
-  });
+  window.addEventListener("app:partials-ready", startApp, { once: true });
 });

@@ -17,536 +17,23 @@
   <meta property="og:locale" content="id_ID" />
   <meta name="twitter:card" content="summary" />
 
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .department-multi-native {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-    }
-
-    .department-multi {
-      position: relative;
-    }
-
-    .department-multi-trigger {
-      width: 100%;
-      min-height: 50px;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.75rem;
-      background: #fff;
-      color: #0f172a;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .department-multi-trigger:focus-visible {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-    }
-
-    .department-multi-label {
-      color: #334155;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      text-align: left;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-    }
-
-    .department-multi-caret {
-      color: #64748b;
-      font-size: 0.75rem;
-      transition: transform 0.2s ease;
-      transform-origin: center;
-    }
-
-    .department-multi-menu {
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 0;
-      right: 0;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      padding: 0.5rem;
-      max-height: 240px;
-      overflow-y: auto;
-      z-index: 30;
-      opacity: 0;
-      transform: translateY(-4px);
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .department-multi-actions {
-      display: flex;
-      gap: 0.5rem;
-      padding: 0.25rem 0.125rem 0.5rem;
-      margin-bottom: 0.25rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .department-multi-action-btn {
-      border: 1px solid #cbd5e1;
-      border-radius: 9999px;
-      background: #fff;
-      color: #1e293b;
-      font-size: 0.75rem;
-      font-weight: 600;
-      line-height: 1rem;
-      padding: 0.25rem 0.625rem;
-      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    }
-
-    .department-multi-action-btn:hover {
-      background: #eff6ff;
-      border-color: #93c5fd;
-      color: #1d4ed8;
-    }
-
-    .department-multi.is-open .department-multi-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .department-multi.is-open .department-multi-caret {
-      transform: rotate(180deg);
-    }
-
-    .department-multi-item {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-      padding: 0.5rem 0.625rem;
-      border-radius: 0.625rem;
-      color: #334155;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      cursor: pointer;
-      transition: background-color 0.15s ease;
-    }
-
-    .department-multi-item:hover {
-      background: #f8fafc;
-    }
-
-    .department-multi-checkbox {
-      width: 16px;
-      height: 16px;
-      accent-color: #2563eb;
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-
-    .department-multi-item-text {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex: 1;
-    }
-
-    #modal-section #department.department-single-native {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-    }
-
-    .department-single {
-      position: relative;
-    }
-
-    .department-single-trigger {
-      width: 100%;
-      min-height: 50px;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.75rem;
-      background: #fff;
-      color: #0f172a;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    }
-
-    .department-single-trigger.is-empty {
-      color: #334155;
-    }
-
-    .department-single-trigger:hover {
-      border-color: #94a3b8;
-      background: #f8fafc;
-    }
-
-    .department-single-trigger:focus-visible {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
-      background: #fff;
-    }
-
-    .department-single-label {
-      flex: 1;
-      text-align: left;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .department-single-caret {
-      color: #64748b;
-      font-size: 0.75rem;
-      transition: transform 0.2s ease;
-      transform-origin: center;
-      flex-shrink: 0;
-    }
-
-    .department-single.is-open .department-single-caret {
-      transform: rotate(180deg);
-    }
-
-    .department-single-menu {
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 0;
-      right: 0;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-      max-height: min(240px, calc(100vh - 220px));
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding: 0.375rem;
-      z-index: 80;
-      opacity: 0;
-      transform: translateY(-4px);
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .department-single.is-open .department-single-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .department-single-option {
-      width: 100%;
-      text-align: left;
-      border: 0;
-      background: transparent;
-      color: #1e293b;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      padding: 0.5rem 0.625rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .department-single-option:hover {
-      background: #f1f5f9;
-    }
-
-    .department-single-option.is-selected {
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-weight: 600;
-    }
-
-    .department-single-option.is-placeholder {
-      color: #64748b;
-    }
-
-    #employeeModal {
-      overflow-y: auto;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-    }
-
-    #employeeModal .animate-fadeIn,
-    #employeeModal #employeeForm,
-    #employeeModal .grid {
-      overflow: visible;
-    }
-  </style>
+  <link rel="preload" href="assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
 
   <main id="main-content" class="min-h-screen">
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-6">
-      <div id="header-section">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <div
-              class="inline-flex items-center rounded-full bg-blue-200 px-3 py-1 text-sm font-medium text-blue-900 mb-3">
-              jQuery CRUD Test
-            </div>
-
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
-              Employee Management System
-            </h1>
-
-            <p class="mt-2 text-slate-600 max-w-2xl">
-              Sistem manajemen karyawan berbasis jQuery untuk mengelola data secara efisien dan terstruktur dengan
-              pendekatan modular.
-            </p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <div
-              class="inline-flex items-center rounded-full bg-green-200 px-3 py-1 text-sm font-medium text-green-900">
-              Version 1.0
-            </div>
-            <div
-              class="inline-flex items-center rounded-full bg-yellow-200 px-3 py-1 text-sm font-medium text-yellow-900">
-              jQuery 3.6.0
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="summary-section">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-          <!-- Total Employees -->
-          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-blue-50 text-blue-700">
-                <!-- Ganti SVG lama dengan Lucide: users -->
-                <i data-lucide="users" class="h-5 w-5"></i>
-              </span>
-              <div>
-                <p class="text-sm text-slate-500 mb-1">Total Karyawan</p>
-                <h3 id="totalEmployees" class="text-2xl font-bold text-slate-900">0</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Total Departments -->
-          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-amber-50 text-amber-700">
-                <!-- Ganti SVG lama dengan Lucide: building-2 -->
-                <i data-lucide="building-2" class="h-5 w-5"></i>
-              </span>
-              <div>
-                <p class="text-sm text-slate-500 mb-1">Total Departemen</p>
-                <h3 id="totalDepartments" class="text-2xl font-bold text-slate-900">0</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Average Salary -->
-          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-green-50 text-green-700">
-                <!-- Ganti SVG lama dengan Lucide: wallet -->
-                <i data-lucide="wallet" class="h-5 w-5"></i>
-              </span>
-              <div>
-                <p class="text-sm text-slate-500 mb-1">Rata-rata Gaji</p>
-                <h3 id="averageSalary" class="text-2xl font-bold text-slate-900">Rp 0</h3>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="action-section">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label for="searchInput" class="block text-sm font-medium text-slate-700 mb-2">
-                  Search Karyawan
-                </label>
-
-                <input type="text" id="searchInput"
-                  placeholder="Cari berdasarkan nama, email, jabatan, atau departemen..."
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              </div>
-
-              <div>
-                <label for="departmentFilter" class="block text-sm font-medium text-slate-700 mb-2">
-                  Filter Departemen
-                </label>
-
-                <select id="departmentFilter"
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white">
-                  <option value="">Semua Departemen</option>
-                  <option value="IT">IT</option>
-                  <option value="HR">HR</option>
-                  <option value="Finance">Finance</option>
-                  <option value="Marketing">Marketing</option>
-                  <option value="Operations">Operations</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="flex items-end">
-              <button id="addEmployeeBtn" type="button"
-                class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm">
-                + Tambah Karyawan
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="table-section">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-          <div class="px-6 py-4 border-b border-slate-200">
-            <h2 class="text-lg font-semibold text-slate-900">Data Karyawan</h2>
-            <p class="text-sm text-slate-600 mt-0.5">Kelola dan monitor data karyawan secara real-time</p>
-          </div>
-
-          <div class="hidden md:block overflow-x-auto">
-            <table class="min-w-full divide-y divide-slate-200">
-              <thead class="bg-slate-50">
-                <tr>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">No</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Nama</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Email</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Jabatan</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Departemen</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Gaji</th>
-                  <th class="px-6 py-3 text-left text-xs font-semibold uppercase text-slate-700">Tanggal Masuk</th>
-                  <th class="px-6 py-3 text-center text-xs font-semibold uppercase text-slate-700">Aksi</th>
-                </tr>
-              </thead>
-              <tbody id="employeeTableBodyDesktop" class="divide-y divide-slate-200 bg-white"></tbody>
-            </table>
-          </div>
-
-          <div id="employeeCardContainer" class="md:hidden p-4 space-y-4"></div>
-        </div>
-      </div>
-
+      <section id="header-section" data-partial="partials/header-section.html"></section>
+      <section id="summary-section" data-partial="partials/summary-section.html"></section>
+      <section id="action-section" data-partial="partials/action-section.html"></section>
+      <section id="table-section" data-partial="partials/table-section.html"></section>
     </div>
-    </div>
-
-    <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-3"></div>
-
-    <div id="globalLoading"
-      class="fixed inset-0 z-[100] hidden items-center justify-center bg-white/80 backdrop-blur-sm">
-      <div class="flex flex-col items-center">
-        <svg class="animate-spin h-10 w-10 text-blue-600 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-          </path>
-        </svg>
-        <p id="loadingText" class="text-sm font-medium text-slate-600">Memuat data...</p>
-      </div>
-    </div>
-
-    <div id="modal-section">
-      <div id="employeeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
-        <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl overflow-hidden animate-fadeIn">
-          <div class="flex items-center justify-between border-b border-slate-200 px-6 py-4">
-            <div>
-              <h2 id="modalTitle" class="text-xl font-semibold text-slate-900">Tambah Karyawan</h2>
-              <p class="text-sm text-slate-600 mt-1">Isi data karyawan di bawah ini.</p>
-            </div>
-
-            <button id="closeModal" type="button" aria-label="Tutup Modal"
-              class="rounded-full p-2 text-slate-500 hover:bg-slate-100 hover:text-red-500 transition">✕</button>
-          </div>
-
-          <form id="employeeForm" class="px-6 py-6">
-            <input type="hidden" id="employeeId" />
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama <span
-                    class="text-red-500">*</span></label>
-                <input type="text" id="name" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-                <p id="nameError" class="text-sm text-red-500 mt-1 hidden">Nama wajib diisi.</p>
-              </div>
-
-              <div>
-                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email <span
-                    class="text-red-500">*</span></label>
-                <input type="email" id="email" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-                <p id="emailError" class="text-sm text-red-500 mt-1 hidden">Email tidak valid.</p>
-              </div>
-
-              <div>
-                <label for="position" class="block text-sm font-medium text-slate-700 mb-1">Jabatan <span
-                    class="text-red-500">*</span></label>
-                <input type="text" id="position" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-                <p id="positionError" class="text-sm text-red-500 mt-1 hidden">Jabatan wajib diisi.</p>
-              </div>
-
-              <div>
-                <label for="department" class="block text-sm font-medium text-slate-700 mb-1">Departemen <span
-                    class="text-red-500">*</span></label>
-                <select id="department" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white">
-                  <option value="">Pilih Departemen</option>
-                  <option value="IT">IT</option>
-                  <option value="HR">HR</option>
-                  <option value="Finance">Finance</option>
-                  <option value="Marketing">Marketing</option>
-                  <option value="Operations">Operations</option>
-                </select>
-                <p id="departmentError" class="text-sm text-red-500 mt-1 hidden">Departemen wajib dipilih.</p>
-              </div>
-
-              <div>
-                <label for="salary" class="block text-sm font-medium text-slate-700 mb-1">Gaji <span
-                    class="text-red-500">*</span></label>
-                <input type="number" id="salary" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-                <p id="salaryError" class="text-sm text-red-500 mt-1 hidden">Gaji wajib diisi.</p>
-              </div>
-
-              <div>
-                <label for="joinDate" class="block text-sm font-medium text-slate-700 mb-1">Tanggal Masuk <span
-                    class="text-red-500">*</span></label>
-                <input type="date" id="joinDate" required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-                <p id="joinDateError" class="text-sm text-red-500 mt-1 hidden">Tanggal masuk wajib diisi.</p>
-              </div>
-            </div>
-
-            <div class="mt-6 flex justify-end gap-3 border-t border-slate-200 pt-5">
-              <button type="button" id="cancelBtn"
-                class="rounded-xl bg-slate-200 px-5 py-3 font-semibold text-slate-700 hover:bg-slate-300 transition">Batal</button>
-              <button type="submit" id="submitBtn"
-                class="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm">Simpan</button>
-            </div>
-          </form>
-        </div>
-      </div>
   </main>
+
+  <div id="overlay-section" data-partial="partials/overlay-section.html"></div>
+  <div id="modal-section" data-partial="partials/modal-section.html"></div>
 
   <script type="application/ld+json">
     {
@@ -560,13 +47,58 @@
   </script>
 
   <script src="assets/libs/jquery.min.js" defer></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script>
-    if (window.lucide && typeof window.lucide.createIcons === "function") {
-      window.lucide.createIcons();
-    }
-  </script>
   <script src="assets/js/app.bundle.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      window.__APP_PARTIALS_READY__ = false;
+
+      const targets = Array.from(document.querySelectorAll("[data-partial]"));
+      const criticalTargets = targets.filter(function (target) {
+        return target.id !== "modal-section";
+      });
+      const deferredTargets = targets.filter(function (target) {
+        return target.id === "modal-section";
+      });
+      const isLocalHost = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+      const partialCacheMode = isLocalHost ? "no-store" : "force-cache";
+
+      const loadPartial = function (target) {
+        const url = target.getAttribute("data-partial");
+        return fetch(url, { cache: partialCacheMode })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Failed to load " + url + " (" + response.status + ")");
+            }
+            return response.text();
+          })
+          .then(function (html) {
+            const liveReloadPattern = new RegExp("<!-- Code injected by live-server -->[\\s\\S]*?<\\/script>", "g");
+            const sanitizedHtml = html.replace(liveReloadPattern, "");
+            target.innerHTML = sanitizedHtml;
+          });
+      };
+
+      const markPartialsReady = function () {
+        window.__APP_PARTIALS_READY__ = true;
+        window.dispatchEvent(new CustomEvent("app:partials-ready"));
+
+        deferredTargets.forEach(function (target) {
+          loadPartial(target).catch(function (error) {
+            console.error("Deferred partial loader error:", error);
+          });
+        });
+      };
+
+      Promise.all(
+        criticalTargets.map(loadPartial)
+      )
+        .then(markPartialsReady)
+        .catch(function (error) {
+          console.error("Partial loader error:", error);
+          markPartialsReady();
+        });
+    });
+  </script>
 
 </body>
 

@@ -5,11 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Employee Management System</title>
-  <meta name="description" content="Aplikasi CRUD karyawan berbasis jQuery untuk mengelola data, pencarian, filter departemen, dan statistik karyawan secara efisien." />
+  <meta name="description"
+    content="Aplikasi CRUD karyawan berbasis jQuery untuk mengelola data, pencarian, filter departemen, dan statistik karyawan secara efisien." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="http://127.0.0.1:5500/index.html" />
   <meta property="og:title" content="Employee Management System" />
-  <meta property="og:description" content="Aplikasi CRUD karyawan berbasis jQuery untuk mengelola data, pencarian, filter departemen, dan statistik karyawan." />
+  <meta property="og:description"
+    content="Aplikasi CRUD karyawan berbasis jQuery untuk mengelola data, pencarian, filter departemen, dan statistik karyawan." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://127.0.0.1:5500/index.html" />
   <meta property="og:locale" content="id_ID" />
@@ -25,7 +27,8 @@
       <div id="header-section">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <div class="inline-flex items-center rounded-full bg-blue-200 px-3 py-1 text-sm font-medium text-blue-900 mb-3">
+            <div
+              class="inline-flex items-center rounded-full bg-blue-200 px-3 py-1 text-sm font-medium text-blue-900 mb-3">
               jQuery CRUD Test
             </div>
 
@@ -34,15 +37,18 @@
             </h1>
 
             <p class="mt-2 text-slate-600 max-w-2xl">
-              Sistem manajemen karyawan berbasis jQuery untuk mengelola data secara efisien dan terstruktur dengan pendekatan modular.
+              Sistem manajemen karyawan berbasis jQuery untuk mengelola data secara efisien dan terstruktur dengan
+              pendekatan modular.
             </p>
           </div>
 
           <div class="flex items-center gap-3">
-            <div class="inline-flex items-center rounded-full bg-green-200 px-3 py-1 text-sm font-medium text-green-900">
+            <div
+              class="inline-flex items-center rounded-full bg-green-200 px-3 py-1 text-sm font-medium text-green-900">
               Version 1.0
             </div>
-            <div class="inline-flex items-center rounded-full bg-yellow-200 px-3 py-1 text-sm font-medium text-yellow-900">
+            <div
+              class="inline-flex items-center rounded-full bg-yellow-200 px-3 py-1 text-sm font-medium text-yellow-900">
               jQuery 3.6.0
             </div>
           </div>
@@ -56,10 +62,8 @@
           <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
             <div class="flex items-center gap-3">
               <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-blue-50 text-blue-700">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5S14.343 11 16 11z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6 20c0-3.333 3.333-5 6-5s6 1.667 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <!-- Ganti SVG lama dengan Lucide: users -->
+                <i data-lucide="users" class="h-5 w-5"></i>
               </span>
               <div>
                 <p class="text-sm text-slate-500 mb-1">Total Karyawan</p>
@@ -72,10 +76,8 @@
           <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
             <div class="flex items-center gap-3">
               <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-amber-50 text-amber-700">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M3 7h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M5 21V8a2 2 0 012-2h10a2 2 0 012 2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <!-- Ganti SVG lama dengan Lucide: building-2 -->
+                <i data-lucide="building-2" class="h-5 w-5"></i>
               </span>
               <div>
                 <p class="text-sm text-slate-500 mb-1">Total Departemen</p>
@@ -88,10 +90,8 @@
           <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 transition hover:shadow-md">
             <div class="flex items-center gap-3">
               <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-green-50 text-green-700">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M12 1v22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M17 5H9.5a3 3 0 000 6H14a3 3 0 010 6H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <!-- Ganti SVG lama dengan Lucide: wallet -->
+                <i data-lucide="wallet" class="h-5 w-5"></i>
               </span>
               <div>
                 <p class="text-sm text-slate-500 mb-1">Rata-rata Gaji</p>
@@ -99,6 +99,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -111,12 +112,9 @@
                   Search Karyawan
                 </label>
 
-                <input
-                  type="text"
-                  id="searchInput"
+                <input type="text" id="searchInput"
                   placeholder="Cari berdasarkan nama, email, jabatan, atau departemen..."
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                />
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
               </div>
 
               <div>
@@ -124,10 +122,8 @@
                   Filter Departemen
                 </label>
 
-                <select
-                  id="departmentFilter"
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white"
-                >
+                <select id="departmentFilter"
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white">
                   <option value="">Semua Departemen</option>
                   <option value="IT">IT</option>
                   <option value="HR">HR</option>
@@ -139,11 +135,8 @@
             </div>
 
             <div class="flex items-end">
-              <button
-                id="addEmployeeBtn"
-                type="button"
-                class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm"
-              >
+              <button id="addEmployeeBtn" type="button"
+                class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm">
                 + Tambah Karyawan
               </button>
             </div>
@@ -155,7 +148,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-200">
             <h2 class="text-lg font-semibold text-slate-900">Data Karyawan</h2>
-              <p class="text-sm text-slate-600 mt-0.5">Kelola dan monitor data karyawan secara real-time</p>
+            <p class="text-sm text-slate-600 mt-0.5">Kelola dan monitor data karyawan secara real-time</p>
           </div>
 
           <div class="hidden md:block overflow-x-auto">
@@ -181,90 +174,106 @@
       </div>
 
     </div>
-  </div>
-
-  <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-3"></div>
-
-  <div id="globalLoading" class="fixed inset-0 z-[100] hidden items-center justify-center bg-white/80 backdrop-blur-sm">
-    <div class="flex flex-col items-center">
-      <svg class="animate-spin h-10 w-10 text-blue-600 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-        </path>
-      </svg>
-      <p id="loadingText" class="text-sm font-medium text-slate-600">Memuat data...</p>
     </div>
-  </div>
 
-  <div id="modal-section">
-    <div id="employeeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
-      <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl overflow-hidden animate-fadeIn">
-        <div class="flex items-center justify-between border-b border-slate-200 px-6 py-4">
-          <div>
-            <h2 id="modalTitle" class="text-xl font-semibold text-slate-900">Tambah Karyawan</h2>
-            <p class="text-sm text-slate-600 mt-1">Isi data karyawan di bawah ini.</p>
-          </div>
+    <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-3"></div>
 
-          <button id="closeModal" type="button" aria-label="Tutup Modal" class="rounded-full p-2 text-slate-500 hover:bg-slate-100 hover:text-red-500 transition">✕</button>
-        </div>
-
-        <form id="employeeForm" class="px-6 py-6">
-          <input type="hidden" id="employeeId" />
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama <span class="text-red-500">*</span></label>
-              <input type="text" id="name" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              <p id="nameError" class="text-sm text-red-500 mt-1 hidden">Nama wajib diisi.</p>
-            </div>
-
-            <div>
-              <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email <span class="text-red-500">*</span></label>
-              <input type="email" id="email" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              <p id="emailError" class="text-sm text-red-500 mt-1 hidden">Email tidak valid.</p>
-            </div>
-
-            <div>
-              <label for="position" class="block text-sm font-medium text-slate-700 mb-1">Jabatan <span class="text-red-500">*</span></label>
-              <input type="text" id="position" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              <p id="positionError" class="text-sm text-red-500 mt-1 hidden">Jabatan wajib diisi.</p>
-            </div>
-
-            <div>
-              <label for="department" class="block text-sm font-medium text-slate-700 mb-1">Departemen <span class="text-red-500">*</span></label>
-              <select id="department" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white">
-                <option value="">Pilih Departemen</option>
-                <option value="IT">IT</option>
-                <option value="HR">HR</option>
-                <option value="Finance">Finance</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Operations">Operations</option>
-              </select>
-              <p id="departmentError" class="text-sm text-red-500 mt-1 hidden">Departemen wajib dipilih.</p>
-            </div>
-
-            <div>
-              <label for="salary" class="block text-sm font-medium text-slate-700 mb-1">Gaji <span class="text-red-500">*</span></label>
-              <input type="number" id="salary" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              <p id="salaryError" class="text-sm text-red-500 mt-1 hidden">Gaji wajib diisi.</p>
-            </div>
-
-            <div>
-              <label for="joinDate" class="block text-sm font-medium text-slate-700 mb-1">Tanggal Masuk <span class="text-red-500">*</span></label>
-              <input type="date" id="joinDate" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
-              <p id="joinDateError" class="text-sm text-red-500 mt-1 hidden">Tanggal masuk wajib diisi.</p>
-            </div>
-          </div>
-
-          <div class="mt-6 flex justify-end gap-3 border-t border-slate-200 pt-5">
-            <button type="button" id="cancelBtn" class="rounded-xl bg-slate-200 px-5 py-3 font-semibold text-slate-700 hover:bg-slate-300 transition">Batal</button>
-            <button type="submit" id="submitBtn" class="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm">Simpan</button>
-          </div>
-        </form>
+    <div id="globalLoading"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-white/80 backdrop-blur-sm">
+      <div class="flex flex-col items-center">
+        <svg class="animate-spin h-10 w-10 text-blue-600 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+          </path>
+        </svg>
+        <p id="loadingText" class="text-sm font-medium text-slate-600">Memuat data...</p>
       </div>
     </div>
+
+    <div id="modal-section">
+      <div id="employeeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
+        <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl overflow-hidden animate-fadeIn">
+          <div class="flex items-center justify-between border-b border-slate-200 px-6 py-4">
+            <div>
+              <h2 id="modalTitle" class="text-xl font-semibold text-slate-900">Tambah Karyawan</h2>
+              <p class="text-sm text-slate-600 mt-1">Isi data karyawan di bawah ini.</p>
+            </div>
+
+            <button id="closeModal" type="button" aria-label="Tutup Modal"
+              class="rounded-full p-2 text-slate-500 hover:bg-slate-100 hover:text-red-500 transition">✕</button>
+          </div>
+
+          <form id="employeeForm" class="px-6 py-6">
+            <input type="hidden" id="employeeId" />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="name" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
+                <p id="nameError" class="text-sm text-red-500 mt-1 hidden">Nama wajib diisi.</p>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email <span
+                    class="text-red-500">*</span></label>
+                <input type="email" id="email" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
+                <p id="emailError" class="text-sm text-red-500 mt-1 hidden">Email tidak valid.</p>
+              </div>
+
+              <div>
+                <label for="position" class="block text-sm font-medium text-slate-700 mb-1">Jabatan <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="position" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
+                <p id="positionError" class="text-sm text-red-500 mt-1 hidden">Jabatan wajib diisi.</p>
+              </div>
+
+              <div>
+                <label for="department" class="block text-sm font-medium text-slate-700 mb-1">Departemen <span
+                    class="text-red-500">*</span></label>
+                <select id="department" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white">
+                  <option value="">Pilih Departemen</option>
+                  <option value="IT">IT</option>
+                  <option value="HR">HR</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Operations">Operations</option>
+                </select>
+                <p id="departmentError" class="text-sm text-red-500 mt-1 hidden">Departemen wajib dipilih.</p>
+              </div>
+
+              <div>
+                <label for="salary" class="block text-sm font-medium text-slate-700 mb-1">Gaji <span
+                    class="text-red-500">*</span></label>
+                <input type="number" id="salary" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
+                <p id="salaryError" class="text-sm text-red-500 mt-1 hidden">Gaji wajib diisi.</p>
+              </div>
+
+              <div>
+                <label for="joinDate" class="block text-sm font-medium text-slate-700 mb-1">Tanggal Masuk <span
+                    class="text-red-500">*</span></label>
+                <input type="date" id="joinDate" required
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" />
+                <p id="joinDateError" class="text-sm text-red-500 mt-1 hidden">Tanggal masuk wajib diisi.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex justify-end gap-3 border-t border-slate-200 pt-5">
+              <button type="button" id="cancelBtn"
+                class="rounded-xl bg-slate-200 px-5 py-3 font-semibold text-slate-700 hover:bg-slate-300 transition">Batal</button>
+              <button type="submit" id="submitBtn"
+                class="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700 transition shadow-sm">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
   </main>
 
   <script type="application/ld+json">
@@ -279,6 +288,12 @@
   </script>
 
   <script src="assets/libs/jquery.min.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons();
+    }
+  </script>
   <script src="assets/js/app.bundle.js" defer></script>
 
 </body>

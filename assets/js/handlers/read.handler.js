@@ -1,0 +1,52 @@
+const ReadHandler = {
+
+  getFilteredEmployees: () => {
+    const keyword = $("#searchInput").val() || "";
+    const department = $("#departmentFilter").val() || "";
+
+    const searchedEmployees = DataService.searchEmployees(keyword);
+
+    if (!department) {
+      return searchedEmployees;
+    }
+
+    return searchedEmployees.filter((employee) => employee.department === department);
+  },
+
+  /**
+   * Render semua data karyawan
+   */
+  renderAll: () => {
+    const employees = ReadHandler.getFilteredEmployees();
+
+    TableComponent.renderTable(employees);
+    TableComponent.updateSummary();
+  },
+
+  /**
+   * Handle fitur search
+   */
+  handleSearch: () => {
+
+    $(document).on("input", "#searchInput", function () {
+      ReadHandler.renderAll();
+    });
+
+    $(document).on("change", "#departmentFilter", function () {
+      ReadHandler.renderAll();
+    });
+
+  },
+
+  /**
+   * Inisialisasi read handler
+   */
+  init: () => {
+    ReadHandler.renderAll();
+    ReadHandler.handleSearch();
+  }
+
+};
+
+// Export global
+window.ReadHandler = ReadHandler;

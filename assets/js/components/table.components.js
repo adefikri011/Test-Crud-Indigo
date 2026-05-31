@@ -32,9 +32,7 @@ const TableComponent = {
         <td class="px-6 py-4 text-sm">${employee.email}</td>
         <td class="px-6 py-4 text-sm">${employee.position}</td>
         <td class="px-6 py-4 text-sm">${employee.department}</td>
-        <td class="px-6 py-4 text-sm text-right">
-          ${TableComponent.formatCurrency(employee.salary)}
-        </td>
+        <td class="px-6 py-4 text-sm">${TableComponent.formatCurrency(employee.salary)}</td>
         <td class="px-6 py-4 text-sm">${employee.joinDate}</td>
         <td class="px-6 py-4 text-center text-sm">
           <button class="edit-btn text-blue-600 mr-3" data-id="${employee.id}">

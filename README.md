@@ -262,7 +262,7 @@ Pengembangan yang bisa ditambahkan ke depannya:
 
 <div align="center">
 
-**Dibuat dengan ❤️ untuk keperluan demo, pembelajaran, dan presentasi teknis.**
+**Project ini dibuat sebagai bagian dari tes keterampilan seleksi magang di [INDOGO.id](https://indogo.id).**
 
 *Fokus pada kesederhanaan, kejelasan alur data, dan pengalaman user yang nyaman.*
 

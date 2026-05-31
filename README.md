@@ -38,31 +38,110 @@ Data disimpan di `localStorage`, sehingga aplikasi dapat dijalankan tanpa backen
 
 ## Struktur Project
 
-```text
-.
-├── index.html
-├── README.md
-├── package.json
-├── tailwind.config.js
-├── partials/
-├── SDD/
-└── assets/
-    ├── css/
-    │   ├── style.css
-    │   └── tailwind.css
-    ├── js/
-    │   ├── app.bundle.js
-    │   ├── app.entry.js
-    │   ├── main.js
-    │   ├── components/
-    │   ├── config/
-    │   ├── handlers/
-    │   ├── helpers/
-    │   └── services/
-    ├── libs/
-    │   └── jquery.min.js
-    └── sounds/
-```
+### File Utama di Root
+
+| File | Penjelasan |
+|---|---|
+| `index.html` | Halaman utama aplikasi. Semua bagian UI dirakit dari partial dan skrip utama dimuat dari sini. |
+| `README.md` | Dokumentasi project. |
+| `package.json` | Daftar dependency dan script build. |
+| `package-lock.json` | Mengunci versi dependency yang terpasang. |
+| `tailwind.config.js` | Konfigurasi Tailwind CSS, termasuk path file yang dipindai saat build. |
+
+### Folder `assets/`
+
+#### `assets/css/`
+
+| File | Penjelasan |
+|---|---|
+| `tailwind.css` | Source CSS utama yang berisi directive Tailwind dan style komponen tambahan. |
+| `style.css` | Hasil build Tailwind yang dipakai langsung oleh browser. |
+
+#### `assets/js/`
+
+| File/Folder | Penjelasan |
+|---|---|
+| `app.entry.js` | Entry point untuk proses bundle JavaScript. |
+| `app.bundle.js` | Hasil build esbuild yang dipakai aplikasi di browser. |
+| `main.js` | Bootstrap utama aplikasi setelah semua modul siap. |
+
+##### `assets/js/components/`
+
+| File | Penjelasan |
+|---|---|
+| `alert.components.js` | Menampilkan notifikasi/toast. |
+| `confirm.components.js` | Menangani dialog konfirmasi sebelum hapus data. |
+| `icon.components.js` | Helper ikon untuk kebutuhan UI tertentu. |
+| `loading.components.js` | Menampilkan dan menyembunyikan loading overlay. |
+| `modal.components.js` | Mengatur buka/tutup modal form karyawan. |
+| `multiselect.components.js` | Membuat komponen filter departemen custom. |
+| `sound.components.js` | Memainkan suara notifikasi sukses. |
+| `table.components.js` | Merender tabel desktop dan card mobile serta summary statistik. |
+
+##### `assets/js/config/`
+
+| File | Penjelasan |
+|---|---|
+| `app.config.js` | Konfigurasi global aplikasi seperti nama aplikasi dan format currency. |
+
+##### `assets/js/handlers/`
+
+| File | Penjelasan |
+|---|---|
+| `create.handler.js` | Menangani proses tambah data karyawan. |
+| `delete.handler.js` | Menangani proses hapus data karyawan. |
+| `read.handler.js` | Menangani pencarian, filter, dan render data. |
+| `update.handler.js` | Menangani proses edit dan update data karyawan. |
+
+##### `assets/js/helpers/`
+
+| File | Penjelasan |
+|---|---|
+| `storage.helper.js` | Membantu menyimpan, mengambil, dan menghapus data dari `localStorage`. |
+| `validation.helper.js` | Validasi input form dan reset error form. |
+
+##### `assets/js/services/`
+
+| File | Penjelasan |
+|---|---|
+| `data.services.js` | Sumber utama logika data, termasuk CRUD dan pencarian karyawan. |
+
+#### `assets/libs/`
+
+| File | Penjelasan |
+|---|---|
+| `jquery.min.js` | Library jQuery yang dipakai oleh project. |
+
+#### `assets/sounds/`
+
+| File | Penjelasan |
+|---|---|
+| `success.mp3` | Suara notifikasi ketika aksi berhasil. |
+
+### Folder `partials/`
+
+| File | Penjelasan |
+|---|---|
+| `header-section.html` | Bagian header utama berisi judul dan deskripsi singkat aplikasi. |
+| `summary-section.html` | Bagian ringkasan statistik karyawan. |
+| `action-section.html` | Bagian pencarian, filter departemen, dan tombol tambah data. |
+| `table-section.html` | Bagian tabel data karyawan desktop dan card mobile. |
+| `overlay-section.html` | Berisi toast container dan loading overlay. |
+| `modal-section.html` | Berisi modal form tambah dan edit karyawan. |
+
+### Folder `SDD/`
+
+| File | Penjelasan |
+|---|---|
+| `usecase.drawio` | Diagram use case aplikasi. |
+| `sequenceDiagram.drawio` | Diagram alur interaksi sistem. |
+| `actifityDiagram.drawio` | Diagram aktivitas aplikasi. |
+
+### Folder Lain
+
+| Folder | Penjelasan |
+|---|---|
+| `node_modules/` | Dependency hasil install npm. Folder ini tidak perlu diedit manual. |
 
 ## Cara Menjalankan
 
@@ -85,11 +164,11 @@ npm run build:js
 
 ## Build Flow
 
-- `assets/css/tailwind.css` adalah source CSS utama
-- `assets/css/style.css` adalah hasil build Tailwind
-- `assets/js/app.entry.js` adalah entry point JavaScript
-- `assets/js/app.bundle.js` adalah hasil bundle esbuild
-- `partials/` berisi pemecahan markup halaman utama
+- `assets/css/tailwind.css` adalah source CSS utama.
+- `assets/css/style.css` adalah hasil build Tailwind.
+- `assets/js/app.entry.js` adalah entry point JavaScript.
+- `assets/js/app.bundle.js` adalah hasil bundle esbuild.
+- `partials/` berisi pemecahan markup halaman utama.
 
 ## Data Schema
 
